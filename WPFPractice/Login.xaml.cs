@@ -23,29 +23,29 @@ namespace WPFPractice
         {
             InitializeComponent();
             demoname = "hello";
-
-
+            SignUpPage signUpPage = new SignUpPage();
+            MainGrid.Children.Add(signUpPage);
+            signUpPage.SignInButtonClick += SignUpPage_SignInButtonClick;
 
         }
 
-        private void Border_MouseEnter(object sender, MouseEventArgs e)
+        private void SignUpPage_SignInButtonClick(object sender, EventArgs e)
+        {
+            MainGrid.Children.Clear();
+            LoginPag loginPag = new LoginPag();
+            loginPag.SignUpButtonClick += LoginPag_SignUpButtonClick
+                ;
+            MainGrid.Children.Add(loginPag);
+        }
+
+        private void LoginPag_SignUpButtonClick(object sender, EventArgs e)
         {
 
+            MainGrid.Children.Clear();
+            SignUpPage signUpPage = new SignUpPage();
+            MainGrid.Children.Add(signUpPage);
+            signUpPage.SignInButtonClick += SignUpPage_SignInButtonClick;
         }
-
-        private void SignInBtnClick(object sender, RoutedEventArgs e)
-        {
-            if(!string.IsNullOrEmpty(EmailTextBox.Text)&& !string.IsNullOrEmpty(PasswordTextBox.Password)) {
-                MessageBox.Show("Sign Successful");
-            }
-            else{
-                MessageBox.Show("Fill Details");
-                EmailTextBox.Clear();
-                PasswordTextBox.Clear();
-            }
-        }
-
-
 
         public string demoname
         {
@@ -57,6 +57,6 @@ namespace WPFPractice
         public static readonly DependencyProperty demonameProperty =
             DependencyProperty.Register("demoname", typeof(string), typeof(Login), new FrameworkPropertyMetadata(default(string),FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
-
+    
     }
 }
