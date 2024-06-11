@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFPractice"
         mc:Ignorable="d"
-        Title="AddWindow" Height="600" Width="1000"  
+        Title="AddWindow" Height="600" Width="1063"  
         WindowStyle="None"
          WindowStartupLocation="CenterScreen"
         >
@@ -53,8 +53,8 @@
                                         <ColumnDefinition Width="2*"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Style="{StaticResource Text }" > Name</TextBlock>
-                                    <Border Grid.Column="1" Padding="20 6" >
-                                        <TextBox   FontSize="18"   ></TextBox>
+                                    <Border Grid.Column="1" Padding="20 10" >
+                                        <TextBox   FontSize="18" Padding="3 5 0 0"  ></TextBox>
                                     </Border>
                                    
                                 </Grid>
@@ -66,8 +66,8 @@
                                         <ColumnDefinition Width="2*"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Style="{StaticResource Text }" > Age</TextBlock>
-                                    <Border Grid.Column="1" Padding="20 6" >
-                                        <TextBox  FontSize="18" ></TextBox>
+                                    <Border Grid.Column="1" Padding="20 10" >
+                                        <TextBox  FontSize="18" Padding="3 5 0 0" ></TextBox>
                                     </Border>
 
                                 </Grid>
@@ -79,8 +79,8 @@
                                         <ColumnDefinition Width="2*"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Style="{StaticResource Text }" > Salary</TextBlock>
-                                    <Border Grid.Column="1" Padding="20 6" >
-                                        <TextBox  FontSize="18" ></TextBox>
+                                    <Border Grid.Column="1" Padding="20 10" >
+                                        <TextBox  FontSize="18" Padding="3 5 0 0"></TextBox>
                                     </Border>
 
                                 </Grid>
@@ -92,7 +92,7 @@
                                         <ColumnDefinition Width="2*"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Style="{StaticResource Text }" > Role</TextBlock>
-                                    <Border  Grid.Column="1" Padding="20 10" >
+                                    <Border  Grid.Column="1" Padding="20 13" >
                                         <ComboBox x:Name="RoleComboBox" FontSize="18" Background="LightBlue"></ComboBox>
                                     </Border>
                                 </Grid>
@@ -110,11 +110,17 @@
                                     <ColumnDefinition Width="2*"/>
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Style="{StaticResource Text }" >Marriage</TextBlock>
-                                <Border  Grid.Column="1" Padding="20 8" >
-                                    <StackPanel Orientation="Horizontal">
-                                        <RadioButton Style="{StaticResource RadionButton}" ></RadioButton>
-                                        <RadioButton></RadioButton>
-                                    </StackPanel>
+                                <Border  Grid.Column="1" Padding="10 8" >
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="2.2*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <RadioButton  Grid.Column="0" Style="{StaticResource RadionButton}" FontSize="18" TextBlock.TextAlignment="Center"  >Married</RadioButton>
+                                        <RadioButton Grid.Column="1" Style="{StaticResource RadionButton}" FontSize="18" TextBlock.TextAlignment="Center" >UnMarried</RadioButton>
+                                    </Grid>
+
                                 </Border>
                             </Grid>
                         </Border>
@@ -125,11 +131,17 @@
                                     <ColumnDefinition Width="2*"/>
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Style="{StaticResource Text }" >Gender</TextBlock>
-                                <Border  Grid.Column="1" Padding="20 8" >
-                                    <StackPanel Orientation="Horizontal">
-                                        <RadioButton></RadioButton>
-                                        <RadioButton></RadioButton>
-                                    </StackPanel>
+                                <Border  Grid.Column="1" Padding="10 8" >
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="1.2*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <RadioButton  Grid.Column="0" Style="{StaticResource RadionButton}" FontSize="18" TextBlock.TextAlignment="Center"  >Male</RadioButton>
+                                        <RadioButton Grid.Column="1" Style="{StaticResource RadionButton}" FontSize="18" TextBlock.TextAlignment="Center" > Female</RadioButton>
+                                        <RadioButton Grid.Column="2" Style="{StaticResource RadionButton}" FontSize="18" TextBlock.TextAlignment="Center" >Other</RadioButton>
+                                    </Grid>
                                 </Border>
                             </Grid>
                         </Border>
@@ -153,7 +165,7 @@
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Style="{StaticResource Text }" >Ex-Employee</TextBlock>
                                 <Border  Grid.Column="1" Padding="20 8" >
-                                    <CheckBox></CheckBox>
+                                    <CheckBox Style="{StaticResource CheckBox}" FontSize="18"> Yes</CheckBox>
                                 </Border>
                             </Grid>
                         </Border>

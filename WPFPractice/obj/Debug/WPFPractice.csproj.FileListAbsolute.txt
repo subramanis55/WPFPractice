@@ -105,3 +105,9 @@ C:\Users\Lucid\OneDrive\Desktop\WPFPractice\WPFPractice\obj\Debug\EventPractice.
 C:\Users\Lucid\OneDrive\Desktop\WPFPractice\WPFPractice\obj\Debug\EventPractice.baml
 C:\Users\Lucid\OneDrive\Desktop\WPFPractice\WPFPractice\obj\Debug\AddWindow.g.cs
 C:\Users\Lucid\OneDrive\Desktop\WPFPractice\WPFPractice\obj\Debug\AddWindow.baml
+C:\Users\ayyan\Desktop\WPFPractice\WPFPractice\obj\Debug\AddWindow.g.cs
+C:\Users\ayyan\Desktop\WPFPractice\WPFPractice\obj\Debug\EventPractice.g.cs
+C:\Users\ayyan\Desktop\WPFPractice\WPFPractice\obj\Debug\MovingAnimationU.g.cs
+C:\Users\ayyan\Desktop\WPFPractice\WPFPractice\obj\Debug\AddWindow.baml
+C:\Users\ayyan\Desktop\WPFPractice\WPFPractice\obj\Debug\EventPractice.baml
+C:\Users\ayyan\Desktop\WPFPractice\WPFPractice\obj\Debug\MovingAnimationU.baml

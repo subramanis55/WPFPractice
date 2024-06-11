@@ -164,18 +164,83 @@
         </Setter>
     </Style>
     <Style x:Key="RadionButton" TargetType="RadioButton">
-        <Setter Property="Template" >
+        <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="RadioButton">
-                    <BulletDecorator>
+                    <BulletDecorator Background="Transparent" VerticalAlignment="Center">
                         <BulletDecorator.Bullet>
-                            <Ellipse Width="14" Height="14" Fill="{TemplateBinding Foreground  }" ></Ellipse>
+                            <Grid Width="15" Height="15" VerticalAlignment="Center">
+                                <Ellipse x:Name="Border" 
+                                             Stroke="Black" 
+                                             StrokeThickness="1"
+                                             Fill="Transparent"/>
+                                <Ellipse x:Name="CheckMark" 
+                                             Fill="Black"
+                                             Width="8" 
+                                             Height="8" 
+                                             HorizontalAlignment="Center" 
+                                             VerticalAlignment="Center"
+                                             Visibility="Hidden"/>
+                            </Grid>
                         </BulletDecorator.Bullet>
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
                     </BulletDecorator>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter TargetName="CheckMark" Property="Visibility" Value="Hidden"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Border" Property="Stroke" Value="Gray"/>
+                            <Setter TargetName="CheckMark" Property="Fill" Value="Gray"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-
-
     </Style>
+
+    <Style x:Key="CheckBox" TargetType="CheckBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <BulletDecorator Background="Transparent" VerticalAlignment="Center">
+                        <BulletDecorator.Bullet>
+                            <Grid Width="18" Height="18" VerticalAlignment="Center">
+                                <Border x:Name="Border" 
+                                             BorderBrush="Black" 
+                                             BorderThickness="1"
+                                             Background="Transparent"
+                                             Width="18"
+                                             Height="18"/>
+                                <Path x:Name="CheckMark"
+                                             Data="M 0 5 L 5 10 L 15 0"
+                                             Stroke="Black"
+                                             StrokeThickness="2"
+                                             HorizontalAlignment="Center" 
+                                             VerticalAlignment="Center"
+                                             Visibility="Hidden"/>
+                            </Grid>
+                        </BulletDecorator.Bullet>
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+                    </BulletDecorator>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter TargetName="CheckMark" Property="Visibility" Value="Hidden"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Border" Property="BorderBrush" Value="Gray"/>
+                            <Setter TargetName="CheckMark" Property="Stroke" Value="Gray"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>
