@@ -21,9 +21,11 @@ namespace WPFPractice
     public partial class LoginPag : UserControl
     {
         public event EventHandler SignUpButtonClick;
+        public event EventHandler loginButtonClick;
         public LoginPag()
         {
             InitializeComponent();
+            
           
         }
         private void PasswordBorderMouseDown(object sender, MouseButtonEventArgs e)
@@ -79,7 +81,12 @@ namespace WPFPractice
         {
             if (!string.IsNullOrEmpty(EmailTextBox.Text) && !string.IsNullOrEmpty(PasswordTextBox.Password))
             {
-                MessageBox.Show("Sign Successful");
+              
+                MainWindow window = new MainWindow();
+                window.Show();
+                loginButtonClick?.Invoke(this, EventArgs.Empty);
+
+
             }
             else
             {

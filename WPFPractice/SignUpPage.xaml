@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFPractice"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="500" d:DesignWidth="800">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -13,7 +13,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Border Background="White" CornerRadius="15 0 0 15">
-            <StackPanel  >
+            <StackPanel >
                 <TextBlock Style="{StaticResource HeaderText}" Foreground="#3AA9A1" Margin="10"> Sign Up</TextBlock>
                 <StackPanel VerticalAlignment="Center" Margin="0 45 0 0" >
                     <Border Padding="35 0 35 0" Margin="0 15 0 5" >
@@ -79,22 +79,32 @@
 
         </Border>
         <Border  Grid.Column="1" Background="#3AA9A1" CornerRadius="0 15 15 0">
-            <StackPanel>
-                <Button Height="40" Width="40" HorizontalAlignment="Right" BorderThickness="0" Background="Transparent" Margin="0 4 6 0" Padding="3" Click="CloseBtnClick">
-                    <Image Source="/Resources/icons8-cancel-25 (1).png"  ></Image>
-                </Button>
-                <Border VerticalAlignment="Center"  HorizontalAlignment="Center" Padding="0 70" >
-                    <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Center" >
+            <Grid x:Name="left">
+                <Canvas>
+                    <Polygon Points="300,30 100,160 300,250" Fill="#4EB1B6"/>
+                    <Polygon Points="100,400 200,370 180,470" Fill="#4EB1B6"/>
+                    <Ellipse Margin="250 450 0 0" Height="20" Width="20" Fill="#4EB1B6"></Ellipse>
+                    <Ellipse Margin="50 450 0 0" Height="20" Width="20" Fill="#4EB1B6"></Ellipse>
+                </Canvas>
+                <StackPanel>
+                
+                    <Button  Style="{StaticResource CloseBtn}"  Height="35" Width="35" HorizontalAlignment="Right"   Margin="0 4 6 0" Padding="3"  Click="CloseBtnClick">
+                        <Image Source="C:\Users\Lucid\OneDrive\Desktop\WPFPractice\WPFPractice\Resources\icons8-cancel-25 (1).png"  ></Image>
+                    </Button>
+                   
 
-                        <TextBlock Style="{StaticResource HeaderText}" Margin="10">
-Sign in
-                        </TextBlock>
-                        <TextBlock Style="{StaticResource NormalText}" TextWrapping="Wrap"  Margin="10" >Already have the account sign in with email</TextBlock>
-                        <Button Style="{StaticResource GreenBtn}"  Margin="10" Click="Button_Click" >Sign In</Button>
-                    </StackPanel>
-         
-        </Border>
-            </StackPanel>
+                    <Border VerticalAlignment="Center"  HorizontalAlignment="Center" Padding="0 70" >
+
+
+                        <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Center" >
+
+                            <TextBlock Style="{StaticResource HeaderText}" Margin="10">Sign in</TextBlock>
+                            <TextBlock Style="{StaticResource NormalText}" TextWrapping="Wrap"  Margin="10" >Already have the account sign in with email</TextBlock>
+                            <Button Style="{StaticResource GreenBtn}"  Margin="10" Click="Button_Click" >Sign In</Button>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Grid>
 
 
         </Border>

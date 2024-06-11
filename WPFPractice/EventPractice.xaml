@@ -1,0 +1,22 @@
+﻿<Window x:Class="WPFPractice.EventPractice"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFPractice"
+        mc:Ignorable="d"
+        Title="EventPractice" Height="450" Width="800">
+    <Grid>
+        <Border Padding="30" Background="Red" MouseEnter="Border_MouseEnter_4" MouseDown="BorderOne" >
+            <Border  Padding="30" Background="Azure" MouseEnter="Border_MouseEnter_3" MouseDown="BorderTwo">
+                <Border Padding="30" Background="LightBlue" MouseEnter="Border_MouseEnter_2" MouseDown="BorderThree">
+                    <Border Padding="30" Background="LightGreen" MouseEnter="Border_MouseEnter_1" MouseDown="BorderFour">
+                        <Border Padding="40" Background="LightGreen" MouseEnter="Border_MouseEnter"  MouseDown="BorderFive">
+                            <TextBox IsTabStop="False" MouseEnter="TextBox_MouseEnter" MouseDown="ButtonMouseDown" ></TextBox>
+                        </Border>
+                    </Border>
+                </Border>
+            </Border>
+        </Border>
+    </Grid>
+</Window>

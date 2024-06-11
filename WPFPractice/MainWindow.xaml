@@ -7,85 +7,138 @@
         mc:Ignorable="d"
        xmlns:usercontrol="clr-namespace:WPFPractice.something"
        WindowStartupLocation="CenterScreen"  WindowStyle="None"
-          AllowsTransparency="true" Background="Transparent"
-        Height="536.017" Width="874.153"
+         Background="Transparent"
+        Height="800" Width="1000"
         Title="MainWindow">
+    <Window.Resources>
+        <Style x:Key="Tabcontrol" TargetType="TabControl">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabControl">
+                        <ContentPresenter ContentSource="SelectedContent"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
-    <Grid>
-       
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        <Style x:Key="Text" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        
+
+        <Style x:Key="MenuButton" TargetType="Button" >
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Background" Value="#F6FCFF"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderThickness="0.5" BorderBrush="Gainsboro" CornerRadius="3" Background="{TemplateBinding Background}" >
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"></ContentPresenter>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background" Value="#CCEBFF"/>
+                </Trigger>
+                <Trigger Property="IsMouseCaptured" Value="true">
+                    <Setter Property="Background" Value="#A5DBFF"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid Name="Maingrid" MouseDown="Grid_MouseDown" Background="White">
         <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="MenuColumn" Width="300"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="1.5*"/>
         </Grid.ColumnDefinitions>
-        <Border CornerRadius="10 0 0 10" Grid.RowSpan="2" >
-            <Border.Background>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#3AA9AD" Offset="0"/>
-                    <GradientStop Color="#3AA9A1" Offset="1"/>
-                </LinearGradientBrush>
-            </Border.Background>
-            <Grid Background="#3AA9A1">
-                    <Polygon Points="0,60 230,140 0,270" Fill="#4EB1B6"/>
-                    <Polygon Points="100,400 200,370 180,470" Fill="#4EB1B6"/>
-                    <Ellipse Margin="250 450 0 0" Height="20" Width="20" Fill="#4EB1B6"></Ellipse>
-                    <Ellipse Margin="50 450 0 0" Height="20" Width="20" Fill="#4EB1B6"></Ellipse>
+        <Grid Name="MenuDrawer" Grid.Column="0"   Background="#F6FCFF">
 
-                <StackPanel VerticalAlignment="Center">
-                    <TextBlock Text="Sign Up" Style="{StaticResource titleText}" Margin=" 10,10,10,10"/>
-                    <TextBlock Text="Enter your personal info and create new account to connect us" Style="{StaticResource normalText}" Opacity=".9"/>
-                    <Button Content="Sign Up" Style="{StaticResource button}"/>
-                </StackPanel>
-            </Grid>
-        </Border>
-        <!--<Border CornerRadius="10 0 0 10">
-          
-        </Border>-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150" />
+                <RowDefinition Height="65" />
+                <RowDefinition Height="65" />
+                <RowDefinition Height="65" />
+                <RowDefinition Height="65" />
+                <RowDefinition Height="65" />
+            </Grid.RowDefinitions>
+            <Border Padding="20" Background="#3AA9A1">
+                <StackPanel  Grid.Row="0" Background="White" >
 
-        <Border Grid.Column="1" Background="White" CornerRadius="0,10,10,0" Grid.RowSpan="1">
-            <StackPanel>
-                <TextBlock Text="Sign in to App" Style="{StaticResource titleText}" Foreground="#3AB198" />
-                <StackPanel Orientation="Horizontal" Margin="0 20" HorizontalAlignment="Center">
-                    <Button Style="{StaticResource buttonCircle}">
-                        <Image  Width="24" Height="24" Source="pack://siteoforigin:,,,/Resources/google-20.png"/>
-                    </Button>
-                    <Button Style="{StaticResource buttonCircle}">
-                        <Image  Width="24" Height="24" Source="pack://siteoforigin:,,,/Resources/facebook-20.png"/>
-                    </Button>
-                    <Button Style="{StaticResource buttonCircle}">
-                        <Image  Width="24" Height="24" Source="pack://siteoforigin:,,,/Resources/instagram-20.png"/>
-                    </Button>
                 </StackPanel>
-                <TextBlock Text="or use your email info :" Style="{StaticResource normalText}" Foreground="#878787" Margin="0 10 0 15"></TextBlock>
-                <Border BorderThickness="1" BorderBrush="#acb0af"  Margin="70,7" CornerRadius="5">
-                    <Grid Margin="7 9">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Image Source="Resources\user-20.png" Height="25" Width="25"/>
-                        <TextBlock x:Name="textEmail" Text="Email" MouseDown="textEmailMouseDown" Style="{StaticResource textHint}" />
-                        <TextBox x:Name="txtEmail" TextChanged="txtEmailTextChanged"/>
-                    </Grid>
+            </Border>
+            <Button Name="HomeBtn" Grid.Row="1" Content="Home" Style="{StaticResource MenuButton}" Click="HomeBtn_Click"></Button>
+            <Button Name="EmployeeBtn" Grid.Row="2" Content="Employee" Style="{StaticResource MenuButton}" Click="EmployeeBtn_Click"></Button>
+            <Button  Name="EditBtn" Grid.Row="3" Content="Edit" Style="{StaticResource MenuButton}" Click="EditBtn_Click"></Button>
+            <Button Name="FilterBtn" Grid.Row="4" Content="filter" Style="{StaticResource MenuButton}" Click="FilterBtn_Click"></Button>
+            <Button Name="DashboardBtn" Grid.Row="5" Content="Dashboard" Style="{StaticResource MenuButton}" Click="DashboardBtn_Click"></Button>
+        </Grid>
+        <Grid Grid.Column="1" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" VerticalAlignment="Top" Orientation="Horizontal" Background="#3AA9A1">
+                <Border HorizontalAlignment="Left" VerticalAlignment="Stretch"  Padding="5 15" Width="60">
+                    <Button Background="#3AA9A1" BorderThickness="0" Click="MenuButtonClick">
+                        <Image Source="C:\Users\Lucid\OneDrive\Desktop\WPFPractice\WPFPractice\Resources\menus.png">
+
+                        </Image>
+                    </Button>
                 </Border>
-                <Border BorderThickness="1" BorderBrush="#acb0af"  Margin="70 7" CornerRadius="5">
-                    <Grid Margin="7 9">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="75*"/>
-                            <ColumnDefinition Width="268*"/>
-                        </Grid.ColumnDefinitions>
-                        <Image Source="pack://siteoforigin:,,,/Resources/password-16.png" Height="25" Width="25"/>
-                        <TextBlock x:Name="textPassword" Text="Password" MouseDown="textPasswordDown" Style="{StaticResource textHint}"  />
-                        <PasswordBox x:Name="txtPassword" PasswordChanged="txtPassword_PasswordChanged" />
-                    </Grid>
-                </Border>
-                <Button  Content="Sign in" Click="Button_Click"  Style="{StaticResource mainbutton}"/>
-                <usercontrol:UserControl1/>
-               
             </StackPanel>
-        </Border>
+            <TabControl x:Name="MainTabControl" Style="{StaticResource Tabcontrol}" Grid.Row="1" SelectionChanged="MainTabControl_SelectionChanged"  >
+                <TabItem x:Name="HomePage" >
+                    <Grid Background="white" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="120"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="0" Background="#fff5f5" Padding="0 0 0 0" >
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="200"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Grid.Column="1">
+                                    <Button  Name="AddButton" Style="{StaticResource NormalButton}"  Content="Add" Height="45" Width="120"  Click="AddButtonClick"  ></Button>
+                                </Border>
+                            </Grid>
+
+                        </Border>
+                        
+                        <Border Grid.Row="1">
+                            <DataGrid>
+                                
+                            </DataGrid>
+                        </Border>
+                    </Grid>
+                </TabItem >
+                <TabItem x:Name="EmployeePage" >
+                    <Grid >
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="EditPage" >
+                    <Grid  Background="Gray">
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="FilterPage" Background="Black" >
+                    <Grid>
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="DashboardPage">
+
+                </TabItem>
+            </TabControl>
+
+        </Grid>
     </Grid>
 </Window>

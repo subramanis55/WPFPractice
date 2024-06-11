@@ -11,7 +11,9 @@ AllowsTransparency="True"
          TextBlock.Foreground="Black"
         Title="Login" Height="500" Width="800">
 
-    <Grid x:Name="MainGrid"/>
+    <Grid x:Name="MainGrid">
+        <local:MoveingAnimationContainer x:Name="moveingAnimationContainer"></local:MoveingAnimationContainer>
+    </Grid>
 </Window>
 
     
