@@ -2,7 +2,12 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:WPFPractice">
 
-
+    <Style x:Key="Text" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+    
     <Style x:Key="NormalButton" TargetType="Button" >
         <Setter Property="Padding" Value="5"/>
         <Setter Property="FontSize" Value="18"/>
@@ -67,7 +72,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border CornerRadius="2" Padding="6" Background="{TemplateBinding Background}" BorderBrush="White">
+                    <Border CornerRadius="0" Padding="6" Background="{TemplateBinding Background}" BorderBrush="White">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border> 
                 </ControlTemplate>
@@ -183,7 +188,7 @@
                                              Visibility="Hidden"/>
                             </Grid>
                         </BulletDecorator.Bullet>
-                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <ContentPresenter VerticalAlignment="Center"  />
                     </BulletDecorator>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">

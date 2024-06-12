@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\ayyan\Desktop\WPFPractice\WPFPractice\obj\Debug\
+C:\Users\Lucid\OneDrive\Desktop\WPFPractice\WPFPractice\obj\Debug\
 WPFPractice
 none
 false
 DEBUG;TRACE
-C:\Users\ayyan\Desktop\WPFPractice\WPFPractice\App.xaml
-11-2117252413
-51364078029
-17406743591
-15-1743954471
-AddWindow.xaml;CustomTextBox.xaml;EventPractice.xaml;Login.xaml;LoginPag.xaml;MainWindow.xaml;OwnStyle.xaml;SignUpPage.xaml;something\UserControl1.xaml;Style.xaml;MovingAnimationU.xaml;
+C:\Users\Lucid\OneDrive\Desktop\WPFPractice\WPFPractice\App.xaml
+13-471667508
+5-899978818
+201606531883
+16-1575060043
+AddWindow.xaml;CustomTextBox.xaml;EmployeeCard.xaml;EventPractice.xaml;Login\Login.xaml;Login\LoginPag.xaml;MainWindow\MainWindow.xaml;Styles\EmployeeCardStyle.xaml;Styles\OwnStyle.xaml;Login\SignUpPage.xaml;something\UserControl1.xaml;Styles\Style.xaml;Login\MovingAnimationU.xaml;
 
-True
+False
 

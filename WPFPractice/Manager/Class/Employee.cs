@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace WPFPractice
 {
-    class Employee
+    public class Employee
     {
+        private int Id;
+        public string EmployeeId;
         private DateTime experience=DateTime.MinValue; 
         public string Name;
         public int Age;
@@ -15,6 +17,10 @@ namespace WPFPractice
         public int Salary;
         public string MarriageStatus;
         public DateTime JoinDateTime;
+        public string PhoneNumber;
+        public string Email;
+        public DateTime DateOfBirth;
+        public string Address;
         public DateTime Experience{
         set{
                 experience = value;
@@ -26,15 +32,18 @@ namespace WPFPractice
         }
         }
         public  Gender Gender;
-        public Employee(string name,int age,Role role,int salary,string marriageStatus,DateTime joinDateTime,Gender gender){
+        public Employee(string employeeId,string name,int age, Gender gender, Role role,int salary,string marriageStatus,DateTime joinDateTime,string phoneNumber,string email){
+            EmployeeId = employeeId;
             Name = name;
             Age = age;
+            Gender = gender;
             Role = role;
             Salary = salary;
             MarriageStatus = marriageStatus;
             JoinDateTime = joinDateTime;
             Experience =new DateTime( DateTime.Now.Year - JoinDateTime.Year,DateTime.Now.Month-JoinDateTime.Month,DateTime.Now.Day-JoinDateTime.Day);
-            Gender = gender;
+            PhoneNumber = phoneNumber;
+            Email = email;
         }
     }
 }

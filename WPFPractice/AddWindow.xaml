@@ -5,18 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFPractice"
         mc:Ignorable="d"
-        Title="AddWindow" Height="600" Width="1063"  
+        Title="AddWindow" MinHeight="650" MinWidth="800"  Height="800" Width="1134"  
         WindowStyle="None"
-         WindowStartupLocation="CenterScreen"
+         WindowStartupLocation="CenterScreen" SizeChanged="Window_SizeChanged"
         >
     <Window.Resources>
-        <Style x:Key="Text" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-        </Style>
+     
     </Window.Resources>
-    <Grid>
+    <Grid Margin="0,0,2,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="55"/>
             <RowDefinition Height="*"/>
@@ -28,8 +24,6 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="80"/>
             </Grid.ColumnDefinitions>
-
-
             <Label Grid.Column="0" FontSize="20" FontWeight="Bold" Foreground="White" Padding="20 10 0 0" >Add</Label>
 
 
@@ -37,154 +31,342 @@
                 <Image Source="C:\Users\Lucid\OneDrive\Desktop\WPFPractice\WPFPractice\Resources\icons8-cancel-25 (1).png" ></Image>
             </Button>
         </Grid>
-        <Border  Grid.Row="1" >
+        <Border  Grid.Row="1" Padding="10 0" >
             <Grid>
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Border>
+                <Border Grid.Column="0" Padding="10 0" >
                     <Grid>
-                        <StackPanel >
-                            <Border Height="100 " Padding="20">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1.5*"/>
-                                        <ColumnDefinition Width="2*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Style="{StaticResource Text }" > Name</TextBlock>
-                                    <Border Grid.Column="1" Padding="20 10" >
-                                        <TextBox   FontSize="18" Padding="3 5 0 0"  ></TextBox>
-                                    </Border>
-                                   
-                                </Grid>
-                            </Border>
-                            <Border Height="100 " Padding="20">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1.5*"/>
-                                        <ColumnDefinition Width="2*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Style="{StaticResource Text }" > Age</TextBlock>
-                                    <Border Grid.Column="1" Padding="20 10" >
-                                        <TextBox  FontSize="18" Padding="3 5 0 0" ></TextBox>
-                                    </Border>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.6*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Border  Grid.Row="0">
+                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource Text }" FontSize="20" FontWeight="Bold" >Personal Details</TextBlock>
+                        </Border>
 
+                        <Grid Grid.Row="1"   >
+                            <Grid VerticalAlignment="Stretch">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="2*"/>
+                                    <RowDefinition Height="3*"/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0">
+                                    <TextBlock  HorizontalAlignment="Left"  VerticalAlignment="Bottom" Style="{StaticResource Text }"  Padding="3 8" >FirstName</TextBlock>
                                 </Grid>
-                            </Border>
-                            <Border Height="100 " Padding="20">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1.5*"/>
-                                        <ColumnDefinition Width="2*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Style="{StaticResource Text }" > Salary</TextBlock>
-                                    <Border Grid.Column="1" Padding="20 10" >
-                                        <TextBox  FontSize="18" Padding="3 5 0 0"></TextBox>
-                                    </Border>
 
+                                <Grid Grid.Row="1"  >
+                                    <TextBox  Name="FirstNameTextBox" HorizontalAlignment="Stretch" VerticalAlignment="Center" MaxWidth="280" FontSize="18" Padding="3 5 0 0"  ></TextBox>
                                 </Grid>
-                            </Border>
-                            <Border Height="100 " Padding="20">
-                                <Grid>
+                            </Grid>
+                        </Grid>
+                        <Grid  Grid.Row="2"  >
+                            <Grid VerticalAlignment="Stretch" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="2*"/>
+                                    <RowDefinition Height="3*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Style="{StaticResource Text }"  >LastName</TextBlock>
+                                <Grid Grid.Row="1" >
+                                    <TextBox  Name="LastNameTextBox" HorizontalAlignment="Stretch" VerticalAlignment="Center" MaxWidth="280"   FontSize="18" Padding="3 5 0 0"  ></TextBox>
+                                </Grid>
+
+                            </Grid>
+                        </Grid>
+                        <Grid  Grid.Row="3" >
+                            <Grid VerticalAlignment="Stretch">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="2*"/>
+                                    <RowDefinition Height="3*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" HorizontalAlignment="Left" Style="{StaticResource Text }"  VerticalAlignment="Bottom"  >DateOfBirth</TextBlock>
+                                <Border  Grid.Row="1"  >
+                                    <DatePicker Name="BirthDatePicker"  HorizontalAlignment="Stretch" VerticalAlignment="Center" MaxWidth="260"  FontSize="18"  ></DatePicker>
+                                </Border>
+                            </Grid>
+                        </Grid>
+
+                        <Grid  Grid.Row="4"  >
+                            <Grid VerticalAlignment="Stretch" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="2*"/>
+                                    <RowDefinition Height="3*"/>
+
+                                </Grid.RowDefinitions>
+                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Bottom" Style="{StaticResource Text }" >Gender</TextBlock>
+
+                                <Grid Grid.Row="1" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1.5*"/>
-                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="0.2*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="1.2*"/>
+                                        <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Style="{StaticResource Text }" > Role</TextBlock>
-                                    <Border  Grid.Column="1" Padding="20 13" >
-                                        <ComboBox x:Name="RoleComboBox" FontSize="18" Background="LightBlue"></ComboBox>
-                                    </Border>
+                                    <Border></Border>
+                                    <RadioButton  Grid.Column="1" Style="{StaticResource RadionButton}" FontSize="18" TextBlock.TextAlignment="Center"  Padding="4 0 0 0" >Male</RadioButton>
+                                    <RadioButton Grid.Column="2" Style="{StaticResource RadionButton}" FontSize="18" TextBlock.TextAlignment="Center" >Female</RadioButton>
+                                    <RadioButton Grid.Column="3" Style="{StaticResource RadionButton}" FontSize="18" TextBlock.TextAlignment="Center" >Other</RadioButton>
                                 </Grid>
-                            </Border>
-                        </StackPanel>
+
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="5"  >
+                            <Grid VerticalAlignment="Stretch">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="2*"/>
+                                    <RowDefinition Height="3*"/>
+
+                                </Grid.RowDefinitions>
+                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Bottom" Style="{StaticResource Text }" Padding="4 8">Marriage</TextBlock>
+
+                                <Grid Grid.Row="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="2.5*"/>
+
+                                    </Grid.ColumnDefinitions>
+                                    <RadioButton  Grid.Column="1" Style="{StaticResource RadionButton}" FontSize="18" TextBlock.TextAlignment="Center"   >Married</RadioButton>
+                                    <RadioButton Grid.Column="2" Style="{StaticResource RadionButton}" FontSize="18" TextBlock.TextAlignment="Center" Padding="5 0 0 0">UnMarried</RadioButton>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                        <Grid  Grid.Row="6"  >
+                            <Grid VerticalAlignment="Stretch">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="2*"/>
+                                    <RowDefinition Height="3*"/>
+
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"  Style="{StaticResource Text }" > PhoneNumber</TextBlock>
+                                <Grid Grid.Row="1"  >
+                                    <TextBox Name="PhoneNumberTextBox" HorizontalAlignment="Stretch" VerticalAlignment="Center"   MaxWidth="280"   FontSize="18" Padding="3 5 0 0" ></TextBox>
+                                </Grid>
+
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="7" >
+                            <Grid VerticalAlignment="Stretch">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="2*"/>
+                                    <RowDefinition Height="3*"/>
+
+                                </Grid.RowDefinitions>
+                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Bottom" Style="{StaticResource Text }" > Email</TextBlock>
+                                <Grid Grid.Row="1"  >
+                                    <TextBox Name="EmailTextBox" HorizontalAlignment="Stretch" VerticalAlignment="Center" MaxWidth="280"   FontSize="18" Padding="3 5 0 0"></TextBox>
+                                </Grid>
+
+                            </Grid>
+                        </Grid>
+
+
+                    </Grid>
+
+                </Border>
+                <Border Grid.Column="1" Padding="15 0" Background="#FBFBFB" >
+
+                    <Grid >
+                        <Grid.RowDefinitions>
+
+                            <RowDefinition Height="2.2*" MinHeight="120"/>
+                            <RowDefinition Height="0.6*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid  VerticalAlignment="Center" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="*" MinHeight="100"/>
+
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" HorizontalAlignment="Left" Style="{StaticResource Text }" > Address</TextBlock>
+                                <Border Grid.Row="1" >
+                                    <RichTextBox FontSize="16" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  MinHeight="100" MaxWidth="300"></RichTextBox>
+                                </Border>
+                            </Grid>
+                        </Grid>
+
+                        <Border Grid.Row="1">
+                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource Text }" FontSize="20" FontWeight="Bold" >Company Details</TextBlock>
+                        </Border>
+                        <Grid Grid.Row="2">
+                            <Grid VerticalAlignment="Stretch">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="2*"/>
+                                    <RowDefinition Height="3*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Style="{StaticResource Text }" >Employee Id</TextBlock>
+                                <Border Grid.Row="1">
+                                    <TextBox Name="EmployeeIdTextBox" HorizontalAlignment="Stretch" VerticalAlignment="Center" MaxWidth="280"   FontSize="18" Padding="3 5 0 0"></TextBox>
+                                </Border>
+                            </Grid>
+                        </Grid>
+
+                        <Border Grid.Row="3">
+                            <Grid VerticalAlignment="Stretch">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="2*"/>
+                                    <RowDefinition Height="3*"/>
+
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"  Style="{StaticResource Text }" > Role</TextBlock>
+                                <Border  Grid.Row="1" >
+                                    <ComboBox x:Name="RoleComboBox" HorizontalAlignment="Stretch" VerticalAlignment="Center" MaxWidth="270"  FontSize="18" Background="LightBlue"></ComboBox>
+                                </Border>
+                            </Grid>
+                        </Border>
+                        <Grid Grid.Row="4" >
+                            <Grid VerticalAlignment="Stretch">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="2*"/>
+                                    <RowDefinition Height="3*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" VerticalAlignment="Bottom"  HorizontalAlignment="Left" Style="{StaticResource Text }" > Salary</TextBlock>
+                                <Border Grid.Row="1"  >
+                                    <TextBox Name="SalaryTextBox"  HorizontalAlignment="Stretch" VerticalAlignment="Center" MaxWidth="280"   FontSize="18" Padding="3 5 0 0"></TextBox>
+                                </Border>
+
+                            </Grid>
+                        </Grid>
+                        <Border Grid.Row="5"  >
+                            <Grid VerticalAlignment="Stretch">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="2*"/>
+                                    <RowDefinition Height="3*"/>
+
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Style="{StaticResource Text }" >JoinDate</TextBlock>
+                                <Border  Grid.Row="1"  >
+                                    <DatePicker Name="JoinDatePicker" HorizontalAlignment="Stretch" VerticalAlignment="Center" MaxWidth="270"   FontSize="18"  ></DatePicker>
+                                </Border>
+                            </Grid>
+                        </Border>
+
+                        <Grid Grid.Row="6" >
+                            <Grid VerticalAlignment="Stretch">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1.2*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock  Grid.Column="0" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Stretch" Padding="4 0" Style="{StaticResource Text }" >Currently Working</TextBlock>
+                                <Border  Grid.Column="1" Padding="20 8" >
+                                    <CheckBox Name="IsExEmployeeCheckBox" HorizontalAlignment="Stretch" VerticalAlignment="Center" MaxWidth="300"  Style="{StaticResource CheckBox}" FontSize="18">Yes</CheckBox>
+                                </Border>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+
+                </Border>
+                <Border Grid.Column="2" Padding="10 0">
+                    <Grid>
+                        <Grid.RowDefinitions  >
+                            <RowDefinition Height="0.75*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="0">
+                            <Grid>
+                                <Grid.RowDefinitions >
+                                    <RowDefinition Height="2*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="1.5*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Grid.Row="0" Grid.Column="1" Padding="20 20">
+                                    <Grid  >
+                                        <Image  HorizontalAlignment="Right" ></Image>
+                                    </Grid>
+                                </Border>
+
+                            </Grid>
+                        </Border>
+                        <Border Grid.Row="1">
+                            <Grid>
+                                <Grid.RowDefinitions>
+
+                                    <RowDefinition Height=".6*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+
+                                </Grid.RowDefinitions>
+                                <Border Grid.Row="0" >
+                                    <TextBlock HorizontalAlignment="Left" Style="{StaticResource Text }" FontSize="20" FontWeight="Bold" >Education Details</TextBlock>
+                                </Border>
+                                <Grid Grid.Row="1" >
+                                    <Grid VerticalAlignment="Stretch">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="2*"/>
+                                            <RowDefinition Height="3*"/>
+
+                                        </Grid.RowDefinitions>
+                                        <TextBlock HorizontalAlignment="Left" Style="{StaticResource Text }" > Degree</TextBlock>
+                                        <Border  Grid.Row="1"  >
+                                            <ComboBox x:Name="DegreeComboBox" HorizontalAlignment="Stretch" VerticalAlignment="Center" MaxWidth="270"  FontSize="18" Background="LightBlue"></ComboBox>
+                                        </Border>
+                                    </Grid>
+                                </Grid>
+                                <Grid Grid.Row="2" >
+                                    <Grid VerticalAlignment="Stretch">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="2*"/>
+                                            <RowDefinition Height="3*"/>
+
+                                        </Grid.RowDefinitions>
+                                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Bottom" Style="{StaticResource Text }" >Degree Specification</TextBlock>
+                                        <Border Grid.Row="1"   >
+                                            <TextBox Name="DegreeSpecificationTextBox" HorizontalAlignment="Stretch" VerticalAlignment="Center" MaxWidth="280" FontSize="18" Padding="3 5 0 0"></TextBox>
+                                        </Border>
+                                    </Grid>
+                                </Grid>
+                                <Grid Grid.Row="3">
+                                    <Grid VerticalAlignment="Stretch">
+                                        <Grid.RowDefinitions >
+                                            <RowDefinition Height="2*"/>
+                                            <RowDefinition Height="3*"/>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Bottom" Style="{StaticResource Text }" >Collage</TextBlock>
+                                        <Border Grid.Row="1"  >
+                                            <TextBox Name="CollageTextBox"  HorizontalAlignment="Stretch" VerticalAlignment="Center" MaxWidth="280"   FontSize="18" Padding="3 5 0 0"></TextBox>
+                                        </Border>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+
+
+                        </Border>
                     </Grid>
                 </Border>
-                <Border Grid.Column="1">
-                    <!--<Grid>-->
-                        <StackPanel>
-                        <Border Height="100 " Padding="20">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1.5*"/>
-                                    <ColumnDefinition Width="2*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Style="{StaticResource Text }" >Marriage</TextBlock>
-                                <Border  Grid.Column="1" Padding="10 8" >
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="2*"/>
-                                            <ColumnDefinition Width="2.2*"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <RadioButton  Grid.Column="0" Style="{StaticResource RadionButton}" FontSize="18" TextBlock.TextAlignment="Center"  >Married</RadioButton>
-                                        <RadioButton Grid.Column="1" Style="{StaticResource RadionButton}" FontSize="18" TextBlock.TextAlignment="Center" >UnMarried</RadioButton>
-                                    </Grid>
-
-                                </Border>
-                            </Grid>
-                        </Border>
-                        <Border Height="100 " Padding="20">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1.5*"/>
-                                    <ColumnDefinition Width="2*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Style="{StaticResource Text }" >Gender</TextBlock>
-                                <Border  Grid.Column="1" Padding="10 8" >
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="1.2*"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <RadioButton  Grid.Column="0" Style="{StaticResource RadionButton}" FontSize="18" TextBlock.TextAlignment="Center"  >Male</RadioButton>
-                                        <RadioButton Grid.Column="1" Style="{StaticResource RadionButton}" FontSize="18" TextBlock.TextAlignment="Center" > Female</RadioButton>
-                                        <RadioButton Grid.Column="2" Style="{StaticResource RadionButton}" FontSize="18" TextBlock.TextAlignment="Center" >Other</RadioButton>
-                                    </Grid>
-                                </Border>
-                            </Grid>
-                        </Border>
-                        <Border Height="100 " Padding="20">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1.5*"/>
-                                    <ColumnDefinition Width="2*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Style="{StaticResource Text }" >JoinDate</TextBlock>
-                                <Border  Grid.Column="1" Padding="20 8" >
-                                    <DatePicker FontSize="18"  ></DatePicker>
-                                </Border>
-                            </Grid>
-                        </Border>
-                        <Border Height="100 " Padding="20">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1.5*"/>
-                                    <ColumnDefinition Width="2*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Style="{StaticResource Text }" >Ex-Employee</TextBlock>
-                                <Border  Grid.Column="1" Padding="20 8" >
-                                    <CheckBox Style="{StaticResource CheckBox}" FontSize="18"> Yes</CheckBox>
-                                </Border>
-                            </Grid>
-                        </Border>
-                    </StackPanel>
-                    <!--</Grid>-->
-                </Border>
             </Grid>
-           
+
         </Border>
         <Border  Grid.Row="2"  >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="400"/>
+                    <ColumnDefinition Width="250"/>
                 </Grid.ColumnDefinitions>
-                <Border Grid.Column="1" Padding="60 5 100 20">
-                    <Button Width="180" Content="Add" Style="{StaticResource NormalButton}" ></Button>
+                <Border Grid.Column="1" Padding="0 15 40 10">
+                    <Button Name="AddButton"   Width="180" Content="Add" Style="{StaticResource NormalButton}" ></Button>
                 </Border>
             </Grid>
         </Border>
+
     </Grid>
 </Window>

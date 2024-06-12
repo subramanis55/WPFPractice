@@ -19,11 +19,14 @@ namespace WPFPractice
     /// </summary>
     public partial class AddWindow : Window
     {
+     
         public AddWindow()
         {
             InitializeComponent();
             RoleComboBox.ItemsSource = EmployeeManager.RoleSource;
-            
+            DegreeComboBox.ItemsSource = Enum.GetNames(typeof(Degree)).ToList();
+            JoinDatePicker.SelectedDate = DateTime.Now;
+           
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -34,6 +37,11 @@ namespace WPFPractice
         private void CloseBtnClick(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            
         }
     }
 }
