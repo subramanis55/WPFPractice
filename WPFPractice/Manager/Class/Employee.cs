@@ -1,26 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace WPFPractice
 {
     public class Employee
     {
-        private int Id;
+        public int Id;
         public string EmployeeId;
         private DateTime experience=DateTime.MinValue; 
-        public string Name;
+        public string FirstName;
+        public string LastName;
         public int Age;
         public Role Role;
         public int Salary;
         public string MarriageStatus;
+        public Image ProfilePhoto; 
         public DateTime JoinDateTime;
         public string PhoneNumber;
         public string Email;
-        public DateTime DateOfBirth;
+        public string AadharNumber;
+        private DateTime dateOfBirth;
         public string Address;
+        public string CollageName;
+        public Degree Degree;
+        public string DegreeSpecification;
+        public string BankName;
+        public string BankIFSCCode;
+        public string AccountNumber;
+        public string PanCardNumber;
+        public Gender Gender;
+        public bool IsExEmployee;
+        public DateTime DateOfBirth{
+            set{
+                dateOfBirth = value;
+                Age = GetAge();
+            }
+            get{
+                return dateOfBirth;
+            }
+        }
         public DateTime Experience{
         set{
                 experience = value;
@@ -31,19 +54,15 @@ namespace WPFPractice
                 return Experience; 
         }
         }
-        public  Gender Gender;
-        public Employee(string employeeId,string name,int age, Gender gender, Role role,int salary,string marriageStatus,DateTime joinDateTime,string phoneNumber,string email){
-            EmployeeId = employeeId;
-            Name = name;
-            Age = age;
-            Gender = gender;
-            Role = role;
-            Salary = salary;
-            MarriageStatus = marriageStatus;
-            JoinDateTime = joinDateTime;
-            Experience =new DateTime( DateTime.Now.Year - JoinDateTime.Year,DateTime.Now.Month-JoinDateTime.Month,DateTime.Now.Day-JoinDateTime.Day);
-            PhoneNumber = phoneNumber;
-            Email = email;
+        
+      
+        private int GetAge(){
+            int value = DateOfBirth.Year - DateTime.Now.Year;
+            if ((DateOfBirth.Day <= DateTime.Now.Day && DateOfBirth.Month == DateTime.Now.Month)|| (DateOfBirth.Month < DateTime.Now.Month))
+            {
+                return value;
+            }
+            return value - 1;
         }
     }
 }

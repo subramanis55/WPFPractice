@@ -2,6 +2,70 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:WPFPractice.Styles">
     <Style x:Key="NameText"  TargetType="TextBlock">
-        
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="FontFamily" Value="Segoe"/>
     </Style>
+    <Style x:Key="AgeGenderText"  TargetType="TextBlock">
+        <Setter Property="FontSize" Value="9"/>
+        <!--<Setter Property="FontWeight" Value="SemiBold"/>-->
+        <Setter Property="FontFamily" Value="Segoe"/>
+        <Setter Property="Foreground" Value="Gray"/>
+    </Style>
+    <ControlTemplate x:Key="RoundImageTemplate" TargetType="ContentControl">
+        <Grid>
+            <Ellipse Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" 
+                         Fill="White">
+                <Ellipse.OpacityMask>
+                    <ImageBrush ImageSource="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}" />
+                </Ellipse.OpacityMask>
+            </Ellipse>
+        </Grid>
+    </ControlTemplate>
+    
+    <Style x:Key="RoundImageStyle" TargetType="Border">
+        <Setter Property="CornerRadius" Value="50"/>
+
+        <Setter Property="Width" Value="100"/>
+
+        <Setter Property="Height" Value="100"/>
+    
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="ClipToBounds" Value="True"/>
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="{Binding Tag, RelativeSource={RelativeSource Self}}"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style  x:Key="RoundButton" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="25" BorderThickness="0.6" BorderBrush="Gainsboro" Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background" Value="#CCEBFF"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <ControlTemplate x:Key="EllipseTextBlockTemplate" TargetType="TextBlock">
+        <Grid>
+           
+            <Path Stroke="Black" StrokeThickness="1">
+                <Path.Data>
+                    <EllipseGeometry Center="100,50" RadiusX="100" RadiusY="50"/>
+                </Path.Data>
+            </Path>
+        
+            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+    </ControlTemplate>
+
 </ResourceDictionary>

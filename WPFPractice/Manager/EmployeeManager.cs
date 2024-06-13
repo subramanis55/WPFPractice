@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -40,9 +41,12 @@ namespace WPFPractice
 
     public static class EmployeeManager
     {
+        public static MySqlConnection Connection;
         public static List<string> RoleSource = Enum.GetNames(typeof(Role)).ToList();
         public static List<string> GenderSource = Enum.GetNames(typeof(Gender)).ToList();
         private static double textFontSize = 16;
+        private static string DatabaseName = "EmployeesManager";
+        private static string DatabasePassword = "";
         public static double TextFontSize
         {
             get
@@ -57,7 +61,19 @@ namespace WPFPractice
                 }
             }
         }
-        public static void CreateEmployeeTable()
+        public static MySqlCommand command = new MySqlCommand();
+        public static bool DatabaseConnection(){
+        try{
+                string Connectionstring = $"server=localhost;port=3306;uid=root;pwd={DatabasePassword};database={DatabaseName}";
+                Connection = new MySqlConnection(Connectionstring);
+                Connection.Open();
+                return true;
+            }
+            catch{
+                return false;
+            }
+        }
+       public static void CreateEmployeeTable()
         {
             string tableQuery = $"Create Table Employee(Id int auto_increment,EmployeeId varchar(100),Name varchar(100),Age int,Gender varchar(100),MarriageStatus varchar(100),Salary int,Joindate DateTime,PhoneNumber varchar(100) ,Email varchar(100),IsExEmployee TINYINT)";
         }

@@ -116,8 +116,8 @@
                         </Border>
                         
                         <Border Grid.Row="1">
-                            <DataGrid>
-                                
+                            <DataGrid  AutoGenerateColumns="True">
+                                <DataGridTextColumn Header="Name" ></DataGridTextColumn>
                             </DataGrid>
                         </Border>
                     </Grid>

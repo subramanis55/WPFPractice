@@ -179,6 +179,8 @@
   <ItemGroup>
     <None Include="Resources\icons8-cancel-25 %281%29.png" />
     <Resource Include="Resources\menus.png" />
+    <Resource Include="Resources\menu %281%29.png" />
+    <Resource Include="Resources\menu %282%29.png" />
     <Content Include="Resources\user-20.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

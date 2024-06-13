@@ -24,6 +24,7 @@ namespace WPFPractice
         {
             InitializeComponent();
             RoleComboBox.ItemsSource = EmployeeManager.RoleSource;
+          
             DegreeComboBox.ItemsSource = Enum.GetNames(typeof(Degree)).ToList();
             JoinDatePicker.SelectedDate = DateTime.Now;
            
