@@ -63,6 +63,9 @@
     <Compile Include="AddWindow.xaml.cs">
       <DependentUpon>AddWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dummy.xaml.cs">
+      <DependentUpon>Dummy.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EmployeeCard.xaml.cs">
       <DependentUpon>EmployeeCard.xaml</DependentUpon>
     </Compile>
@@ -77,6 +80,7 @@
     <Compile Include="Login\SignUpPage.xaml.cs">
       <DependentUpon>SignUpPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Manager\FeaturesManager.cs" />
     <Compile Include="something\UserControl1.xaml.cs">
       <DependentUpon>UserControl1.xaml</DependentUpon>
     </Compile>
@@ -88,6 +92,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CustomTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dummy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

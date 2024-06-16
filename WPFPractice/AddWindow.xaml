@@ -4,14 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFPractice"
+   
         mc:Ignorable="d"
         Title="AddWindow" MinHeight="650" MinWidth="800"  Height="800" Width="1134"  
         WindowStyle="None"
          WindowStartupLocation="CenterScreen" SizeChanged="Window_SizeChanged"
         >
     <Window.Resources>
-     
+        <local:EnumToBooleanConverter x:Key="EnumToBooleanConverter"/>
     </Window.Resources>
+
     <Grid Margin="0,0,2,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="55"/>
@@ -91,7 +93,7 @@
                                 </Grid.RowDefinitions>
                                 <TextBlock Grid.Row="0" HorizontalAlignment="Left" Style="{StaticResource Text }"  VerticalAlignment="Bottom"  >DateOfBirth</TextBlock>
                                 <Border  Grid.Row="1"  >
-                                    <DatePicker Name="BirthDatePicker"  HorizontalAlignment="Stretch" VerticalAlignment="Center" MaxWidth="230"  FontSize="18"  ></DatePicker>
+                                    <DatePicker Name="DateOfBirthPicker" VerticalAlignment="Center" MaxWidth="230"  FontSize="18" Margin="0,10,0,11"  />
                                 </Border>
                             </Grid>
                         </Grid>
@@ -113,9 +115,9 @@
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
                                     <Border></Border>
-                                    <RadioButton  Grid.Column="1" Style="{StaticResource RadionButton}" FontSize="18" TextBlock.TextAlignment="Center"  Padding="4 0 0 0" >Male</RadioButton>
-                                    <RadioButton Grid.Column="2" Style="{StaticResource RadionButton}" FontSize="18" TextBlock.TextAlignment="Center" >Female</RadioButton>
-                                    <RadioButton Grid.Column="3" Style="{StaticResource RadionButton}" FontSize="18" TextBlock.TextAlignment="Center" >Other</RadioButton>
+                                    <RadioButton  Grid.Column="1" Style="{StaticResource RadionButton}"  IsChecked="{Binding Gender, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static local:Gender.Male}}"  GroupName="GenderGroup" FontSize="18" TextBlock.TextAlignment="Center"  Padding="4 0 0 0" >Male</RadioButton>
+                                    <RadioButton Grid.Column="2" Style="{StaticResource RadionButton}"  IsChecked="{Binding Gender, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static local:Gender.Female}}"  GroupName="GenderGroup"  FontSize="18" TextBlock.TextAlignment="Center" >Female</RadioButton>
+                                    <RadioButton Grid.Column="3" Style="{StaticResource RadionButton}"  IsChecked="{Binding Gender, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static local:Gender.Others}}"  GroupName="GenderGroup" FontSize="18" TextBlock.TextAlignment="Center" >Other</RadioButton>
                                 </Grid>
 
                             </Grid>
@@ -136,8 +138,8 @@
                                         <ColumnDefinition Width="2.5*"/>
 
                                     </Grid.ColumnDefinitions>
-                                    <RadioButton  Grid.Column="1" Style="{StaticResource RadionButton}" FontSize="18" TextBlock.TextAlignment="Center"   >Married</RadioButton>
-                                    <RadioButton Grid.Column="2" Style="{StaticResource RadionButton}" FontSize="18" TextBlock.TextAlignment="Center" Padding="5 0 0 0">UnMarried</RadioButton>
+                                    <RadioButton  Grid.Column="1" Content="Married" Style="{StaticResource RadionButton}" FontSize="18" TextBlock.TextAlignment="Center"  Checked="MarriageStatusRadioButtonChecked"  ></RadioButton>
+                                    <RadioButton Grid.Column="2" Content="UnMarried" Style="{StaticResource RadionButton}" FontSize="18" TextBlock.TextAlignment="Center" Checked="MarriageStatusRadioButtonChecked" Padding="5 0 0 0"></RadioButton>
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -174,7 +176,7 @@
                     </Grid>
 
                 </Border>
-                
+
                 <Border Grid.Column="1" Padding="15 0" Background="#FBFBFB" >
 
                     <Grid HorizontalAlignment="Stretch" MaxWidth="350" >
@@ -186,7 +188,7 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
-                        
+
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0" >
                             <Grid VerticalAlignment="Stretch">
@@ -209,7 +211,7 @@
                                 </Grid.RowDefinitions>
                                 <TextBlock Grid.Row="0" HorizontalAlignment="Left" Style="{StaticResource Text }" > Address</TextBlock>
                                 <Border Grid.Row="1" >
-                                    <RichTextBox FontSize="16" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  MinHeight="100" MaxWidth="250"></RichTextBox>
+                                    <RichTextBox   Name="AddressTextBox" FontSize="16" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  MinHeight="100" MaxWidth="250"></RichTextBox>
                                 </Border>
                             </Grid>
                         </Grid>
@@ -239,7 +241,7 @@
                                 </Grid.RowDefinitions>
                                 <TextBlock Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"  Style="{StaticResource Text }" > Role</TextBlock>
                                 <Border  Grid.Row="1" >
-                                    <ComboBox x:Name="RoleComboBox" HorizontalAlignment="Stretch" VerticalAlignment="Center" MaxWidth="230"  FontSize="18" Background="LightBlue"></ComboBox>
+                                    <ComboBox x:Name="RoleComboBox" MaxDropDownHeight="180" HorizontalAlignment="Stretch" VerticalAlignment="Center" MaxWidth="230"  FontSize="18" Background="LightBlue"></ComboBox>
                                 </Border>
                             </Grid>
                         </Border>
@@ -270,7 +272,7 @@
                             </Grid>
                         </Border>
 
-                     
+
                     </Grid>
 
                 </Border>
@@ -320,7 +322,7 @@
                                         </Grid.RowDefinitions>
                                         <TextBlock HorizontalAlignment="Left" Style="{StaticResource Text }" > Degree</TextBlock>
                                         <Border  Grid.Row="1"  >
-                                            <ComboBox x:Name="DegreeComboBox" HorizontalAlignment="Stretch" VerticalAlignment="Center" MaxWidth="230"  FontSize="18" Background="LightBlue"></ComboBox>
+                                            <ComboBox x:Name="DegreeComboBox" MaxDropDownHeight="180" HorizontalAlignment="Stretch" VerticalAlignment="Center" MaxWidth="230"  FontSize="18" Background="LightBlue"></ComboBox>
                                         </Border>
                                     </Grid>
                                 </Grid>
@@ -363,7 +365,7 @@
                     <ColumnDefinition Width="250"/>
                 </Grid.ColumnDefinitions>
                 <Border Grid.Column="1" Padding="0 15 40 10">
-                    <Button Name="AddButton"   Width="180" Content="Add" Style="{StaticResource NormalButton}" ></Button>
+                    <Button Name="AddButton"   Width="180" Content="Add" Style="{StaticResource NormalButton}" Click="Button_Click" ></Button>
                 </Border>
             </Grid>
         </Border>

@@ -21,9 +21,10 @@ namespace WPFPractice
     /// </summary>
     public partial class MainWindow : Window
     {
-        public bool IsMenuDrawVisible=true;
+        public bool IsMenuDrawVisible=false;
+
         public static readonly DependencyProperty AnimatedColumnWidthProperty =
-           DependencyProperty.Register("AnimatedColumnWidth", typeof(double), typeof(MainWindow), new PropertyMetadata(0.0, OnAnimatedColumnWidthChanged));
+           DependencyProperty.Register("AnimatedColumnWidth", typeof(double), typeof(MainWindow), new PropertyMetadata(10));
 
         public double AnimatedColumnWidth
         {
@@ -42,8 +43,22 @@ namespace WPFPractice
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = this;
+            Loaded += MainWindowLoaded;
         }
 
+        private void MainWindowLoaded(object sender, RoutedEventArgs e)
+        {
+           EmployeeManager.EmployeeManagerSetUp();
+            ExitsEmployeesCardsAdd();
+        }
+
+        private void ExitsEmployeesCardsAdd()
+        { List<Employee> EmployeeList = EmployeeManager.EmployeeDictionary.Values.ToList();
+            for (int i = 0; i < EmployeeList.Count; i++) {
+                EmployeeCardAlignPanel.Children.Add(new EmployeeCard(EmployeeList[i]) { Margin = new Thickness(12, 12, 12, 12) });
+              }
+        }
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
 
@@ -54,19 +69,18 @@ namespace WPFPractice
             
                 IsMenuDrawVisible = !IsMenuDrawVisible;
            if(IsMenuDrawVisible){
-               
-                ////MenuColumn.BeginAnimation(AnimatedColumnWidthProperty, animation);
+                DoubleAnimation animation = new DoubleAnimation(300, new TimeSpan(500));
+                BeginAnimation(AnimatedColumnWidthProperty, animation);
                 //MenuColumn.BeginAnimation(ColumnDefinition.WidthProperty, animation);
                 //Maingrid.ColumnDefinitions[0].BeginAnimation
-
-                Maingrid.ColumnDefinitions[0].Width = new GridLength(300);
+                //Maingrid.ColumnDefinitions[0].Width = new GridLength(300);
             }
             else{
-                //DoubleAnimation animation = new DoubleAnimation(0,new TimeSpan(500));
-                //MenuColumn.BeginAnimation(ColumnDefinition.WidthProperty, animation);
+                DoubleAnimation animation = new DoubleAnimation(0,new TimeSpan(500));
+               BeginAnimation(AnimatedColumnWidthProperty, animation);
                 //(AnimatedColumnWidthProperty, animation);
                 //Maingrid.ColumnDefinitions[0].BeginAnimation(WidthProperty, animation);
-                Maingrid.ColumnDefinitions[0].Width = new GridLength(0);
+                //Maingrid.ColumnDefinitions[0].Width = new GridLength(0);
             }
         }
 
@@ -108,7 +122,17 @@ namespace WPFPractice
         private void AddButtonClick(object sender, RoutedEventArgs e)
         {
             AddWindow addWindow = new AddWindow();
+            addWindow.OnClickEmployeeObjectGet += AddWindowOnClickEmployeeObjectGet;
             addWindow.ShowDialog();
+        }
+
+        private void AddWindowOnClickEmployeeObjectGet(object sender, Employee employee)
+        {
+            Window window = (Window)(sender);
+            window.Close();
+            EmployeeManager.CreateEmployee(employee);
+            EmployeeCard employeeCard = new EmployeeCard(employee) { Margin=new Thickness(12,12,12,12)};
+            EmployeeCardAlignPanel.Children.Add(employeeCard);
         }
     }
 }

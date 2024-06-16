@@ -39,6 +39,8 @@
         </Setter>
     </Style>
     <Style  x:Key="RoundButton" TargetType="Button">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -50,9 +52,13 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background" Value="Gainsboro"/>
+            </Trigger>
+            <Trigger Property="IsMouseCaptured" Value="true">
                 <Setter Property="Background" Value="#CCEBFF"/>
             </Trigger>
         </Style.Triggers>
+     
     </Style>
 
     <ControlTemplate x:Key="EllipseTextBlockTemplate" TargetType="TextBlock">

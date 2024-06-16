@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFPractice"
         mc:Ignorable="d"
-       xmlns:usercontrol="clr-namespace:WPFPractice.something"
        WindowStartupLocation="CenterScreen"  WindowStyle="None"
          Background="Transparent"
         Height="800" Width="1000"
@@ -55,9 +54,9 @@
     </Window.Resources>
 
     <Grid Name="Maingrid" MouseDown="Grid_MouseDown" Background="White">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition x:Name="MenuColumn" Width="300"/>
-            <ColumnDefinition Width="*"/>
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition  Width="{Binding AnimatedColumnWidth}"/>
+            <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
         <Grid Name="MenuDrawer" Grid.Column="0"   Background="#F6FCFF">
 
@@ -116,9 +115,10 @@
                         </Border>
                         
                         <Border Grid.Row="1">
-                            <DataGrid  AutoGenerateColumns="True">
-                                <DataGridTextColumn Header="Name" ></DataGridTextColumn>
-                            </DataGrid>
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" > 
+                                <WrapPanel Name="EmployeeCardAlignPanel"></WrapPanel>
+                            </ScrollViewer>
+                           
                         </Border>
                     </Grid>
                 </TabItem >

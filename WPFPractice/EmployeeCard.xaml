@@ -4,87 +4,93 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFPractice"
-             mc:Ignorable="d" Height="120.167" Width="159.917">
+             mc:Ignorable="d" Height="150.284" Width="220.346">
+    <Grid>
+        <Grid  >
 
-    <Grid >
-
-        <Border Background="White" CornerRadius="8" BorderThickness="0.5" BorderBrush="Gainsboro" Margin="0,0,-22,0"   >
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="2*"/>
-                    <RowDefinition Height="4*"/>
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.4*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="0.3*"/>
-
-                    </Grid.ColumnDefinitions>
-                    <Border Grid.Column="0" Padding="10" CornerRadius="15">
-                        <Image Name="ProfileImage" Source="/Resources/user-20.png" >
-                        </Image>
-                    </Border>
-
-                    <!--<Border  Style="{StaticResource RoundImageStyle}" Tag="C:\Users\Lucid\OneDrive\Desktop\WPFPractice\WPFPractice\Resources\user-20.png" />-->
-                    <Grid Grid.Column="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <TextBlock Name="EmployeeNameTextBlock" VerticalAlignment="Bottom" Grid.Row="0" Style="{StaticResource NameText }">Name</TextBlock>
-                        <TextBlock Name="AgeGenderTextBlock" VerticalAlignment="Center" Grid.Row="1" Padding="4" Style="{StaticResource AgeGenderText}">Age,Male</TextBlock>
-                    </Grid>
-                    <Border Grid.Column="2" Padding="5">
-
-                        <Button Name="MenuButton"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Background="White" MaxHeight="30" MaxWidth="30"  Style="{StaticResource RoundButton}">
-                            <Image Source="C:\Users\Lucid\OneDrive\Desktop\WPFPractice\WPFPractice\Resources\menu (2).png" VerticalAlignment="Center" HorizontalAlignment="Center" Width="16" Height="16"  ></Image>
-                        </Button>
-
-
-                    </Border>
-                </Grid>
-                <Grid Grid.Row="1" Margin="0,0,0,5">
+            <Border Background="White" Margin="0 0 3 3" CornerRadius="7"  BorderThickness="0.5" BorderBrush="Gainsboro"   >
+                <Grid Margin="0,0,2,4">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="2*"/>
-                        <RowDefinition Height="2*"/>
-                        <RowDefinition Height="2*"/>
-
+                        <RowDefinition Height="4*"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*"/>
-                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="0.3*"/>
+
                         </Grid.ColumnDefinitions>
-                        <TextBlock Name="PhoneNoTextBlock"  Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="10 0" Foreground="#0167BC" FontSize="9" FontWeight="DemiBold">+91 9876543210</TextBlock>
-                        <Border Grid.Column="1"  MinWidth="50" Padding="5 3">
-                            <Grid>
-                                <Border   CornerRadius="7" MaxHeight="13" Background="#00BCD4" Padding="7 1 7 2">
-
-                                    <TextBlock Name="EmployeeRoleTextBox" FontSize="7"  VerticalAlignment="Center" HorizontalAlignment="Center"  Text=" Manager ">
-
-                                    </TextBlock>
-                                </Border>
-                            </Grid>
+                        <Border Grid.Column="0" Padding="8" CornerRadius="15">
+                            <Image Name="ProfileImage" Source="/Resources/user-20.png" >
+                            </Image>
                         </Border>
 
+                        <!--<Border  Style="{StaticResource RoundImageStyle}" Tag="C:\Users\Lucid\OneDrive\Desktop\WPFPractice\WPFPractice\Resources\user-20.png" />-->
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Name="EmployeeNameTextBlock" Text="{Binding EmployeeName}"  VerticalAlignment="Bottom" Grid.Row="0" Style="{StaticResource NameText }"/>
+                            <TextBlock Name="AgeGenderTextBlock" Text="{Binding EmployeeAgeAndGender}" VerticalAlignment="Center" Grid.Row="1" Padding="4" Style="{StaticResource AgeGenderText}"/>
+                        </Grid>
+                        <Border Grid.Column="2" Padding="5">
+
+                            <Button Name="MenuButton"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"   MaxHeight="30" MaxWidth="30"  Style="{StaticResource RoundButton}">
+                                <Image Source="C:\Users\Lucid\OneDrive\Desktop\WPFPractice\WPFPractice\Resources\menu (2).png" VerticalAlignment="Center" HorizontalAlignment="Center" Width="16" Height="16"  ></Image>
+                            </Button>
+
+
+                        </Border>
+                    </Grid>
+                    <Grid Grid.Row="1" Margin="0,0,0,5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="2*"/>
+
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Name="PhoneNoTextBlock"  Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="10 0" Foreground="#0167BC" FontSize="9" FontWeight="DemiBold" Text="{Binding PhoneNumber}"></TextBlock>
+                            <Border Grid.Column="1"  MinWidth="50" Padding="5 3">
+                                <Grid>
+                                    <Border Name="RoleBackGround"  CornerRadius="7" MaxHeight="15" Background="{Binding EmployeeRoleBackGroundColor}" Padding="7 1 7 2">
+
+                                        <TextBlock Name="EmployeeRoleTextBox" FontSize="9"  VerticalAlignment="Center" HorizontalAlignment="Center"  Foreground="White" Text="{Binding EmployeeRole}">
+
+                                        </TextBlock>
+                                    </Border>
+                                </Grid>
+                            </Border>
+
+
+                        </Grid>
+
+                        <StackPanel Orientation="Horizontal" Grid.Row="1" >
+                            <TextBlock  VerticalAlignment="Center" Padding="10 0"  FontSize="11" FontWeight="DemiBold">Email :</TextBlock>
+                            <TextBlock  Name="EmailTextBlock" Text="{Binding EmployeeEmail}" VerticalAlignment="Center"   FontSize="10" FontWeight="Medium"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Grid.Row="2" >
+                            <TextBlock  VerticalAlignment="Center" Padding="10 0"  FontSize="11" FontWeight="DemiBold"></TextBlock>
+                            <TextBlock  VerticalAlignment="Center"   FontSize="10" FontWeight="Medium"></TextBlock>
+                        </StackPanel>
 
                     </Grid>
-
-                    <StackPanel Orientation="Horizontal" Grid.Row="1" >
-                        <TextBlock  VerticalAlignment="Center" Padding="10 0"  FontSize="11" FontWeight="DemiBold">Email :</TextBlock>
-                        <TextBlock  Name="EmailTextBlock" VerticalAlignment="Center"   FontSize="10" FontWeight="Medium">Abc@gmail.com</TextBlock>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Grid.Row="2" >
-                        <TextBlock  VerticalAlignment="Center" Padding="10 0"  FontSize="11" FontWeight="DemiBold"></TextBlock>
-                        <TextBlock  VerticalAlignment="Center"   FontSize="10" FontWeight="Medium"></TextBlock>
-                    </StackPanel>
-
                 </Grid>
-            </Grid>
+
+            </Border>
+
+
+        </Grid>
+        <Border  CornerRadius="9 6  7 6" Margin="2 2 0 0" Opacity="0.6" Background="#EBEBEB"  IsHitTestVisible="False" Panel.ZIndex="-1" >
 
         </Border>
-
-
     </Grid>
+   
+   
 </UserControl>

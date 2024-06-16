@@ -19,7 +19,7 @@ namespace WPFPractice
         public Role Role;
         public int Salary;
         public string MarriageStatus;
-        public Image ProfilePhoto; 
+        public System.Windows.Media.ImageSource ProfilePhoto; 
         public DateTime JoinDateTime;
         public string PhoneNumber;
         public string Email;
@@ -57,7 +57,7 @@ namespace WPFPractice
         
       
         private int GetAge(){
-            int value = DateOfBirth.Year - DateTime.Now.Year;
+            int value = DateTime.Now.Year-DateOfBirth.Year ;
             if ((DateOfBirth.Day <= DateTime.Now.Day && DateOfBirth.Month == DateTime.Now.Month)|| (DateOfBirth.Month < DateTime.Now.Month))
             {
                 return value;

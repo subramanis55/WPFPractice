@@ -112,7 +112,9 @@ C:\Users\Lucid\OneDrive\Desktop\WPFPractice\WPFPractice\obj\Debug\Login\SignUpPa
 C:\Users\Lucid\OneDrive\Desktop\WPFPractice\WPFPractice\obj\Debug\Styles\Style.baml
 C:\Users\Lucid\OneDrive\Desktop\WPFPractice\WPFPractice\obj\Debug\Login\MovingAnimationU.baml
 C:\Users\Lucid\OneDrive\Desktop\WPFPractice\WPFPractice\obj\Debug\WPFPractice.csproj.CopyComplete
-C:\Users\Lucid\OneDrive\Desktop\WPFPractice\WPFPractice\obj\Debug\WPFPractice.csprojAssemblyReference.cache
 C:\Users\Lucid\OneDrive\Desktop\WPFPractice\WPFPractice\obj\Debug\EmployeeCard.g.cs
 C:\Users\Lucid\OneDrive\Desktop\WPFPractice\WPFPractice\obj\Debug\EmployeeCard.baml
 C:\Users\Lucid\OneDrive\Desktop\WPFPractice\WPFPractice\obj\Debug\Styles\EmployeeCardStyle.baml
+C:\Users\Lucid\OneDrive\Desktop\WPFPractice\WPFPractice\obj\Debug\WPFPractice.csprojAssemblyReference.cache
+C:\Users\Lucid\OneDrive\Desktop\WPFPractice\WPFPractice\obj\Debug\Dummy.g.cs
+C:\Users\Lucid\OneDrive\Desktop\WPFPractice\WPFPractice\obj\Debug\Dummy.baml

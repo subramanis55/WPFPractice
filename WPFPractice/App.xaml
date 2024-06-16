@@ -2,16 +2,30 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:WPFPractice"
-             StartupUri="Login/Login.xaml">
-    <Application.Resources>
-
+             StartupUri="MainWindow/MainWindow.xaml">
+    <!--<Application.Resources>
+        <local:SharedColor x:Key="SharedColor" Color="Red"/>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+              
                 <ResourceDictionary Source="Styles/Style.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Styles/OwnStyle.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Styles/EmployeeCardStyle.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
        
+    </Application.Resources>-->
+    <Application.Resources>
+        <!-- Define the SharedColor resource -->
+        <!--<local:SharedColor x:Key="SharedColor" Color="Red"/>-->
+
+        <!-- Define Resource Dictionaries -->
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/Style.xaml"/>
+                <ResourceDictionary Source="Styles/OwnStyle.xaml"/>
+                <ResourceDictionary Source="Styles/EmployeeCardStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

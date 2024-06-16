@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,41 +13,62 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPFPractice.Manager;
 
 namespace WPFPractice
 {
+
     /// <summary>
     /// Interaction logic for EmployeeCard.xaml
     /// </summary>
     public partial class EmployeeCard : UserControl
     {
 
-        public static readonly DependencyProperty ProfileImageSourceProperty = DependencyProperty.Register("ProfileImage", typeof(Image), typeof(EmployeeCard));
-        public static readonly DependencyProperty EmployeeNameProperty = DependencyProperty.Register("EmployeeNameTextBlock", typeof(string), typeof(EmployeeCard));
-        public static readonly DependencyProperty AgeGenderProperty = DependencyProperty.Register("AgeGenderTextBlock", typeof(string), typeof(EmployeeCard));
-        public static readonly DependencyProperty PhoneNoProperty = DependencyProperty.Register("PhoneNoTextBlock", typeof(string), typeof(EmployeeCard));
-        public static readonly DependencyProperty EmailProperty = DependencyProperty.Register("EmailTextBlock", typeof(string), typeof(EmployeeCard));
-        public static readonly DependencyProperty EmployeeRoleProperty = DependencyProperty.Register("EmployeeRoleTextBox", typeof(string), typeof(EmployeeCard));
+        public static readonly DependencyProperty ProfileImageSourceProperty = DependencyProperty.Register("ProfileImage", typeof(ImageSource), typeof(EmployeeCard));
+        public static readonly DependencyProperty EmployeeNameProperty = DependencyProperty.Register("EmployeeName", typeof(string), typeof(EmployeeCard), new PropertyMetadata("Employee Name"));
+        public static readonly DependencyProperty AgeGenderProperty = DependencyProperty.Register("EmployeeAgeAndGender", typeof(string), typeof(EmployeeCard), new PropertyMetadata("20 Years,Male"));
+        public static readonly DependencyProperty PhoneNoProperty = DependencyProperty.Register("PhoneNumber", typeof(string), typeof(EmployeeCard), new PropertyMetadata("+91 9876543210"));
+        public static readonly DependencyProperty EmailProperty = DependencyProperty.Register("EmployeeEmail", typeof(string), typeof(EmployeeCard), new PropertyMetadata("Abc@gmail.com"));
+        public static readonly DependencyProperty EmployeeRoleProperty = DependencyProperty.Register("EmployeeRole", typeof(Role), typeof(EmployeeCard), new PropertyMetadata(Role.Manager));
+        public static readonly DependencyProperty EmployeeRoleBackgroundColorProperty = DependencyProperty.Register("EmployeeRoleBackGroundColor", typeof(Brush), typeof(EmployeeCard), new PropertyMetadata(new SolidColorBrush((Color) ColorConverter.ConvertFromString("#CCEBFF"))));
         private Employee employee;
-        private  Image profileImage;
+        private ImageSource profileImage;
+
         public Employee Employee
         {
             set
             {
-                employee = value;
-                ProfilePhoto = employee.ProfilePhoto;
-                Email = employee.Email;
-                EmployeeAgeAndGender = employee.Age + "years" + " " + employee.Gender.ToString();
-                PhoneNumber = employee.PhoneNumber;
-                EmployeeRole = employee.Role;
-                EmployeeName = employee.FirstName;
+                if (value != null)
+                {
+                    employee = value;
+                    ProfilePhoto = employee.ProfilePhoto;
+                    EmployeeEmail = employee.Email;
+                    EmployeeAgeAndGender = employee.Age + " years" + "," + employee.Gender.ToString();
+                    PhoneNumber = employee.PhoneNumber;
+                    EmployeeRole = employee.Role;
+                    EmployeeName = employee.FirstName;
+                    EmployeeRoleBackGroundColor = FeaturesManager.EmployeeRoleBackGroundColor(employee.Role);
+               
+                }
             }
             get
             {
                 return employee;
             }
         }
-        public Image ProfilePhoto
+
+        public Brush EmployeeRoleBackGroundColor
+        {
+            set
+            {
+                SetValue(EmployeeRoleBackgroundColorProperty, value);
+            }
+            get
+            {
+                return (Brush)GetValue(EmployeeRoleBackgroundColorProperty);
+            }
+        }
+        public ImageSource ProfilePhoto
         {
             set
             {
@@ -56,7 +78,7 @@ namespace WPFPractice
             }
             get
             {
-                return (Image)GetValue(ProfileImageSourceProperty);
+                return (ImageSource)GetValue(ProfileImageSourceProperty);
             }
         }
         public string EmployeeName
@@ -76,23 +98,27 @@ namespace WPFPractice
             {
                 SetValue(AgeGenderProperty, value);
             }
+            get
+            {
+                return (string)GetValue(AgeGenderProperty);
+            }
 
         }
         public string PhoneNumber
         {
             set
             {
-                SetValue(PhoneNoProperty, value);
+                SetValue(PhoneNoProperty,"+91 "+ value);
             }
             get
             {
                 return (string)GetValue(PhoneNoProperty);
             }
         }
-        public string Email
+        public string EmployeeEmail
         {
             set
-            {   
+            {
                 SetValue(EmailProperty, value);
             }
             get
@@ -100,23 +126,27 @@ namespace WPFPractice
                 return (string)GetValue(EmailProperty);
             }
         }
-        public Role EmployeeRole{
-        set{
-                SetValue(EmployeeRoleProperty,value.ToString());    
-        }
-        get{
-                return (Role)Enum.Parse(typeof(Role),(string)GetValue(EmployeeRoleProperty));
-        }
+        public Role EmployeeRole
+        {
+            set
+            {
+                SetValue(EmployeeRoleProperty, value);
+            }
+            get
+            {
+                return (Role)Enum.Parse(typeof(Role), (string)GetValue(EmployeeRoleProperty));
+            }
         }
         public EmployeeCard()
         {
             InitializeComponent();
-
+            DataContext = this;
         }
-        
-        public EmployeeCard( Employee employee)
+
+        public EmployeeCard(Employee employee)
         {
             InitializeComponent();
+            DataContext = this;
             Employee = employee;
         }
 
